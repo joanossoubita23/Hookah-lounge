@@ -42,4 +42,13 @@ public class DrinkImplementation implements DrinkService {
     public void deleteDrinkById(Long id) {
         drinkRepository.deleteById(id);
     }
+
+    @Override
+    public Drinks updateDrinkById(Long id, Drinks drinks) {
+        Drinks existingDrinks=getDrinksById(id);
+        existingDrinks.setName(existingDrinks.getName());
+        existingDrinks.setPrice(existingDrinks.getPrice());
+        drinkRepository.save(existingDrinks);
+        return existingDrinks;
+    }
 }

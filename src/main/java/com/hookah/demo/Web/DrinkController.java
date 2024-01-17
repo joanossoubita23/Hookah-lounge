@@ -33,4 +33,8 @@ public class DrinkController {
     public ResponseEntity<Drinks> deleteDrinkById(@PathVariable Long id){
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+    @PutMapping("/{id}")
+    public ResponseEntity<Drinks> updateDrinkById(@PathVariable Long id,@RequestBody Drinks drinks){
+        return new ResponseEntity<>(drinkService.updateDrinkById(id,drinks),HttpStatus.CREATED);
+    }
 }

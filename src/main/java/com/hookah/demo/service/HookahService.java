@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface HookahService {
     List<Hookah> gethookahs();
+
+    Hookah gethookahById( Long id);
 }

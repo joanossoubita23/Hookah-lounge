@@ -37,4 +37,9 @@ public class HookahController {
         hookahService.gethookahById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+    @PutMapping("/{id}")
+    public ResponseEntity<Hookah> updateHookahById(@PathVariable Long id,@RequestBody Hookah hookah){
+        return new ResponseEntity<>(hookahService.updateHookahById(id,hookah),HttpStatus.CREATED);
+
+    }
 }

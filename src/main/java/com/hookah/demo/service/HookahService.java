@@ -12,4 +12,6 @@ public interface HookahService {
     Hookah addhookah(Hookah hookah);
 
     void deleteHookahById(Long id);
+
+    Hookah updateHookahById(Long id,Hookah hookah);
 }

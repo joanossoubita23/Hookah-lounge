@@ -41,5 +41,16 @@ public class HookahImplementation implements  HookahService{
          hookahRepository.deleteById(id);
     }
 
+    @Override
+    public Hookah updateHookahById(Long id, Hookah hookah) {
+        Hookah existingHookah=gethookahById(id);
+        hookah.setName(hookah.getName());
+        hookah.setFlavour(hookah.getFlavour());
+        hookah.setPrice(hookah.getPrice());
+        hookahRepository.save(existingHookah);
+
+        return existingHookah;
+    }
+
 
 }

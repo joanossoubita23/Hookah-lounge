@@ -30,4 +30,16 @@ public class HookahImplementation implements  HookahService{
             throw new EntityNotFoundException("Hookah with id"+id+ "id not found");
         }
     }
+
+    @Override
+    public Hookah addhookah(Hookah hookah) {
+        return hookahRepository.save(hookah);
+    }
+
+    @Override
+    public void deleteHookahById(Long id) {
+         hookahRepository.deleteById(id);
+    }
+
+
 }

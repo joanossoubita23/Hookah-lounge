@@ -29,4 +29,8 @@ public class DrinkController {
     public ResponseEntity<Drinks> addDrink(@RequestBody Drinks drinks){
         return new ResponseEntity<>(drinkService.addDrink(drinks),HttpStatus.CREATED);
     }
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Drinks> deleteDrinkById(@PathVariable Long id){
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }

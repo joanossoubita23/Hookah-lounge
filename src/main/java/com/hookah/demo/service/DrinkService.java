@@ -10,4 +10,6 @@ public interface DrinkService {
     Drinks getDrinksById(Long id);
 
     Drinks addDrink(Drinks drinks);
+
+    void deleteDrinkById(Long id);
 }

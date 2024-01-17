@@ -37,4 +37,9 @@ public class DrinkImplementation implements DrinkService {
     public Drinks addDrink(Drinks drinks) {
         return drinkRepository.save(drinks);
     }
+
+    @Override
+    public void deleteDrinkById(Long id) {
+        drinkRepository.deleteById(id);
+    }
 }

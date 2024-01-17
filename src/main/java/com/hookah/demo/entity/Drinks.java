@@ -14,6 +14,12 @@ public class Drinks {
     private double price;
     private  String name;
 
+    public Drinks(String name, double price) {
+
+        this.name = name;
+        this.price = price;
+    }
+
     public double getPrice() {
         return price;
     }
@@ -33,7 +39,5 @@ public class Drinks {
     public Drinks() {
     }
 
-    public Drinks(Long id) {
-        this.id = id;
-    }
+
 }

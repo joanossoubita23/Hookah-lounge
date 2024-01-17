@@ -6,4 +6,8 @@ import java.util.List;
 
 public interface DrinkService {
     List<Drinks> getdrinks();
+
+    Drinks getDrinksById(Long id);
+
+    Drinks addDrink(Drinks drinks);
 }

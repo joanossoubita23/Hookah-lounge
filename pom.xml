@@ -25,6 +25,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jdbc</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
@@ -61,5 +62,17 @@
 			</plugin>
 		</plugins>
 	</build>
+	<distributionManagement>
+		<snapshotRepository>
+			<id>nexusdeploymentrepo</id>
+			<url>http://52.91.201.101:8081/repository/maven-snapshots/</url> <!-- Update the IP/Address to Your Nexus VM IP -->
+		</snapshotRepository>											  <!-- Mmake sure to create the "maven-snapshots" repo in Nexus -->
+		<repository>
+			<id>nexusdeploymentrepo</id>
+			<url>http://52.91.201.101:8081/repository/maven-releases/</url> <!-- Update the IP/Address to Your Nexus VM IP -->
+		</repository>													 <!-- Also make sure you have the above two or one repositories created -->
+
+	</distributionManagement>
+
 
 </project>

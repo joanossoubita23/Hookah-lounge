@@ -39,6 +39,8 @@ public class HookahApplication implements CommandLineRunner {
 		Hookah hookah3=new Hookah("zombie","banana",34.90);
 		hookahRepository.save(hookah);
 		hookahRepository.save(hookah1);
+		hookahRepository.save(hookah2);
+		hookahRepository.save(hookah3);
 
 		List<Drinks> drinksList= Arrays.asList(
 

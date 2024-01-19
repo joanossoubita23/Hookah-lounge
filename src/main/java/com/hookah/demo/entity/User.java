@@ -3,7 +3,7 @@ package com.hookah.demo.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "users")
+@Table(name="users")
 
 public class User {
     @Id
@@ -11,9 +11,13 @@ public class User {
     @Column(nullable = false,updatable = false)
     private  Long id;
     @Column(nullable = false,unique = true)
-    private  String username;
+
+    private String username;
     @Column(nullable = false)
-    private String password;
+    private  String password;
+
+
+
     @Column(nullable = false)
     private String role;
 
@@ -49,4 +53,12 @@ public class User {
 
     public User() {
     }
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 }

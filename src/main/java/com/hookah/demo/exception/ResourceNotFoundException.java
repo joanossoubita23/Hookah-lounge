@@ -1,2 +1,5 @@
-package com.hookah.demo.exception;public class ResourceNotFoundException {
+package com.hookah.demo.exception;
+
+public class ResourceNotFoundException extends RuntimeException {
+    public ResourceNotFoundException(String message){super(message);}
 }

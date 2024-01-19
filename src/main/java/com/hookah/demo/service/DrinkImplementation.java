@@ -1,6 +1,7 @@
 package com.hookah.demo.service;
 
 import com.hookah.demo.entity.Drinks;
+import com.hookah.demo.exception.ResourceNotFoundException;
 import com.hookah.demo.repository.DrinkRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
@@ -29,7 +30,7 @@ public class DrinkImplementation implements DrinkService {
         if (optionalDrinks.isPresent()) {
            return optionalDrinks.get();
         } else {
-            throw new EntityNotFoundException("Drinks with id" + id + "Cannot be found try again");
+            throw new ResourceNotFoundException("Drinks with id" + id + "Cannot be found try again");
         }
     }
 

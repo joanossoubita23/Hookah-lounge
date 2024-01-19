@@ -1,10 +1,12 @@
 package com.hookah.demo.service;
 
 import com.hookah.demo.entity.Hookah;
+import com.hookah.demo.exception.ResourceNotFoundException;
 import com.hookah.demo.repository.HookahRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.lang.module.ResolutionException;
 import java.util.List;
 import java.util.Optional;
 @Service
@@ -27,7 +29,7 @@ public class HookahImplementation implements  HookahService{
         if (optionalHookah.isPresent()){
             return optionalHookah.get();
         }else {
-            throw new EntityNotFoundException("Hookah with id"+id+ "id not found");
+            throw new ResourceNotFoundException("Hookah with id"+id+ "id not found");
         }
     }
 

@@ -2,8 +2,10 @@ package com.hookah.demo;
 
 import com.hookah.demo.entity.Drinks;
 import com.hookah.demo.entity.Hookah;
+import com.hookah.demo.entity.User;
 import com.hookah.demo.repository.DrinkRepository;
 import com.hookah.demo.repository.HookahRepository;
+import com.hookah.demo.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,8 @@ import java.util.List;
 
 @SpringBootApplication
 public class HookahApplication implements CommandLineRunner {
+	@Autowired
+	private UserRepository userRepository;
 	@Autowired
 	private HookahRepository hookahRepository;
 	@Autowired
@@ -51,6 +55,8 @@ public class HookahApplication implements CommandLineRunner {
 				new Drinks("liquor",23.45)
 		);
 		drinkRepository.saveAll(drinksList);
+		userRepository.save(new User("user","$2y$10$HGSjwwZZNAAus299dswKfOUr6g4BdlKNmHZQYX/KWEZgdofu6T0Mi","USER"));
+		userRepository.save(new User("admin","$2y$10$.EsCUhtysTxoXpfqBDcqsuSFKHChQNdAVeDpkZeIDSxjMIBRPzozm","ADMIN"));
 
 	}
 }

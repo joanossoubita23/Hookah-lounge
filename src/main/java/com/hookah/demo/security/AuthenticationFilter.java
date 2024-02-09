@@ -1,10 +1,12 @@
 package com.hookah.demo.security;
 
+import com.hookah.demo.security.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -17,18 +19,19 @@ import java.util.Collections;
 
 @Component
 
-public class AuthenticationFilter  extends OncePerRequestFilter {
+
+public class AuthenticationFilter extends OncePerRequestFilter {
     @Autowired
-    private  JwtService jwtService;
+    private JwtService jwtService;
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String jwsToken=request.getHeader(HttpHeaders.AUTHORIZATION);
-        if (jwsToken !=null){
+        if(jwsToken !=null){
             String user=jwtService.getAuthUser(request);
             Authentication authentication=new UsernamePasswordAuthenticationToken(user,null, Collections.EMPTY_LIST);
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
         filterChain.doFilter(request,response);
-
     }
 }

@@ -6,15 +6,16 @@ import io.jsonwebtoken.security.Keys;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpHeaders;
+import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
 import java.security.Key;
 import java.util.Date;
 
+@Service
 public class JwtService {
-    //Create token time
     static final long EXPIRATIONTIME = 86400000;
-    static final String PREFIX = "Bearer";
+    static final String PREFIX = "Bearer ";
     static final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
     public String getToken(String username) {
@@ -24,20 +25,22 @@ public class JwtService {
                 .signWith(key)
                 .compact();
         return token;
-    }
 
-    public String getAuthUser(HttpServletRequest request) {
+    }
+    public String getAuthUser(HttpServletRequest request){
         String token = request.getHeader(HttpHeaders.AUTHORIZATION);
-        if (token != null) {
+        System.out.println(token);
+        if (token != null){
             String user = Jwts.parser()
                     .verifyWith((SecretKey) key)
                     .build()
-                    .parseSignedClaims(token.replace(PREFIX, ""))
-                    .getPayload()
+                    .parseClaimsJws(token.replace(PREFIX, ""))
+                    .getBody()
                     .getSubject();
-            if (user != null) return user;
+
+            if(user != null) return  user;
+
         }
         return null;
     }
-
 }
